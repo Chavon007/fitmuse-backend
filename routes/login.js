@@ -18,13 +18,13 @@ router.post("/login", async (req, res) => {
     if (!isMatch)
       return res.status(401).json({ message: "Incorrect Password" });
 
-    const token = jwt.sign({ email: user.email }, SECRET, {
+    const token = jwt.sign({ id: user._id, email: user.email }, SECRET, {
       expiresIn: "1h",
     });
 
     res.send({
       message: "Login successful",
-      user: { email: user.email },
+      user: { id: user._id, email: user.email },
       token,
     });
   } catch (err) {
