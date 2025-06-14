@@ -1,3 +1,10 @@
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const User = require("../models.js"); 
+
+const router = express.Router();
+const SECRET = process.env.JWT_SECRET || "2476";
+
 router.get("/verify-user", async (req, res) => { 
   const authHeader = req.headers.authorization;
   console.log("🔐 Incoming /verify-user request...");
@@ -28,3 +35,6 @@ router.get("/verify-user", async (req, res) => {
     res.status(401).json({ message: "Invalid token" });
   }
 });
+
+
+module.exports = router;
