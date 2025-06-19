@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://fitmuse.vercel.app"],
+    origin: ["https://fitmuse.vercel.app", "http://localhost:3000"],
     credentials: true,
   })
 );
